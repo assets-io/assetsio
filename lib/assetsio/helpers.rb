@@ -6,13 +6,13 @@ module AssetsIO
   class << self
     attr_accessor :account, :origin
 
-    def asset_url(request, source, type)
-      source_url = Addressable::URI.parse(request.url) + source
+    def asset_url(request, type, *sources)
+      request_uri = Addressable::URI.parse(request.url)
       asset_spec = {
         :a => account,
         :r => 'b6',
         :h => 'localhost', # TODO: remove once whitelisting refers to sources
-        :s => [ source_url.to_s ],
+        :s => sources.map { | source| (request_uri + source).to_s },
         :v => 0,
         :w => 0
       }
