@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_path  = 'lib'
 
   s.add_dependency 'addressable'
+  s.add_dependency 'multi_json'
 
   s.add_development_dependency 'rdoc',  '>=2.4.2'
   s.add_development_dependency 'rspec', '>=2.0'

@@ -1,5 +1,6 @@
 require 'addressable/uri'
 require 'base64'
+require 'multi_json'
 
 module AssetsIO
 
@@ -18,7 +19,7 @@ module AssetsIO
       }
 
       origin_server = origin || "//#{account}.cloudfront.net"
-      "#{origin_server}/#{Base64.urlsafe_encode64(asset_spec.to_json)}.#{type}"
+      "#{origin_server}/#{Base64.urlsafe_encode64(MultiJson.encode(asset_spec))}.#{type}"
     end
   end
 
